@@ -1,0 +1,57 @@
+﻿@model DoPhuongNam_KiemTra.Models.DangKy
+
+@{
+    ViewBag.Title = "DangKySinhVien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DangKySinhVien</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>DangKy</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayDK, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NgayDK, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NgayDK, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaSV, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MaSV, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MaSV, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="XacNhanMaSV">
+            Xác Nhận MSSV:
+        </label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line input-validation-error"
+                   data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
+                   id="XacNhanMaSV" name="XacNhanMaSV" type="password" value="" aria-
+                   describedby="XacNhanMaSV-error" aria-invalid="true">
+
+            @ViewData["NhapMSV"]
+            @ViewData["MaSVgiongNhau"]
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Đăng Ký" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

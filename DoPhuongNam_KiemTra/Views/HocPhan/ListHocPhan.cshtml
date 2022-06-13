@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DoPhuongNam_KiemTra.Models.HocPhan>
+@{
+    ViewBag.Title = "ListHocPhan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Học Phần</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th> Mã Học Phần </th>
+        <th> Tên Học Phần</th>
+        <th> Số Tín Chỉ </th>
+        
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.MaHP)</td>
+            <td>@Html.DisplayFor(modelItem => item.TenHP)</td>  
+            <td>@Html.DisplayFor(modelItem => item.SoTinChi)</td>
+            <td>
+                <input type="button" id = item.MaSV value="Đăng Ký" class="btn btn-success" />
+            </td>
+        </tr>
+    }
+</table>
